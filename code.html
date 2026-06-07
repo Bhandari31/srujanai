@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lumina AI - Creative Design Agency</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<!-- Added GSAP for future scrollable hero animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container-highest": "#353535",
+                "primary-fixed-dim": "#c6c6c7",
+                "on-tertiary-fixed-variant": "#454749",
+                "background": "#131313",
+                "tertiary-container": "#e2e2e4",
+                "surface-container-low": "#1b1b1b",
+                "secondary-fixed": "#e3e2e7",
+                "primary": "#ffffff",
+                "surface-tint": "#c6c6c7",
+                "on-primary-fixed-variant": "#454747",
+                "on-primary-container": "#636565",
+                "primary-fixed": "#e2e2e2",
+                "outline": "#8e9192",
+                "on-tertiary": "#2f3132",
+                "on-background": "#e2e2e2",
+                "outline-variant": "#444748",
+                "tertiary-fixed-dim": "#c6c6c8",
+                "on-primary-fixed": "#1a1c1c",
+                "secondary": "#c6c6cb",
+                "on-surface": "#e2e2e2",
+                "inverse-primary": "#5d5f5f",
+                "tertiary-fixed": "#e2e2e4",
+                "on-secondary-fixed-variant": "#46474b",
+                "surface-container-high": "#2a2a2a",
+                "on-primary": "#2f3131",
+                "on-error": "#690005",
+                "on-tertiary-fixed": "#1a1c1d",
+                "on-error-container": "#ffdad6",
+                "inverse-on-surface": "#303030",
+                "surface-dim": "#131313",
+                "on-secondary-container": "#b8b8bd",
+                "surface-container-lowest": "#0e0e0e",
+                "secondary-fixed-dim": "#c6c6cb",
+                "surface-bright": "#393939",
+                "error-container": "#93000a",
+                "secondary-container": "#48494d",
+                "on-tertiary-container": "#636466",
+                "tertiary": "#ffffff",
+                "surface-variant": "#353535",
+                "surface": "#131313",
+                "surface-container": "#1f1f1f",
+                "on-secondary": "#2f3034",
+                "error": "#ffb4ab",
+                "primary-container": "#e2e2e2",
+                "on-surface-variant": "#c4c7c8",
+                "on-secondary-fixed": "#1a1b1f",
+                "inverse-surface": "#e2e2e2",
+                "background-light": "#F5F5F7",
+                "background-dark": "#0A0A0A",
+                "surface-dark": "rgba(255, 255, 255, 0.03)",
+                "surface-dark-hover": "rgba(255, 255, 255, 0.08)",
+                "border-dark": "rgba(255, 255, 255, 0.1)",
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px",
+                '2xl': "2rem",
+                '3xl': "2.5rem"
+        },
+        "spacing": {
+                "margin-mobile": "20px",
+                "gutter": "24px",
+                "margin-desktop": "80px",
+                "unit": "8px",
+                "container-max": "1440px"
+        },
+        "fontFamily": {
+                "headline-lg-mobile": ["Outfit", "sans-serif"],
+                "body-lg": ["Inter", "sans-serif"],
+                "headline-lg": ["Outfit", "sans-serif"],
+                "display-lg": ["Outfit", "sans-serif"],
+                "body-sm": ["Inter", "sans-serif"],
+                "label-caps": ["Inter", "sans-serif"],
+                display: ["Outfit", "sans-serif"],
+                sans: ["Inter", "sans-serif"],
+        },
+        "fontSize": {
+                "headline-lg-mobile": [
+                        "32px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.6",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "display-lg": [
+                        "80px",
+                        {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-caps": [
+                        "12px",
+                        {
+                                "lineHeight": "1.0",
+                                "letterSpacing": "0.1em",
+                                "fontWeight": "600"
+                        }
+                ]
+        },
+        backgroundImage: {
+            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            'hero-glow': 'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.15) 0%, transparent 50%)',
+        }
+},
+    },
+  }
+</script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A0A;
+            color: #FFFFFF;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .glass-button {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 8px 32px 0 rgba(0, 0, 0, 0.3),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+                inset 0 10px 20px rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
+            border-radius: 9999px;
+        }
+        .glass-button::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: skewX(-20deg);
+            transition: all 0.6s ease;
+        }
+        .glass-button:hover::before {
+            left: 150%;
+        }
+        .glass-button:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 12px 40px 0 rgba(0, 0, 0, 0.4),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.25),
+                inset 0 15px 25px rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px) scale(1.02);
+        }
+        .text-gradient {
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.03;
+        }
+        
+        /* Obsidian Glass Styles */
+        .obsidian-card {
+            background: linear-gradient(180deg, #181210 0%, #0a0a0a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 20px 40px -20px rgba(220, 120, 80, 0.15),
+                        inset 0 0 15px rgba(220, 120, 80, 0.05),
+                        0 20px 40px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .obsidian-card:hover {
+            transform: translateY(-4px);
+            box-shadow: inset 0 20px 40px -20px rgba(220, 120, 80, 0.25),
+                        inset 0 0 15px rgba(220, 120, 80, 0.08),
+                        0 25px 50px rgba(0,0,0,0.7);
+        }
+        .obsidian-card.purple-glow {
+            background: linear-gradient(180deg, #161020 0%, #0a0a0a 100%);
+            box-shadow: inset 0 20px 40px -20px rgba(168, 85, 247, 0.2),
+                        inset 0 0 15px rgba(168, 85, 247, 0.05),
+                        0 20px 40px rgba(0,0,0,0.6);
+        }
+        .obsidian-card.purple-glow:hover {
+            box-shadow: inset 0 20px 40px -20px rgba(168, 85, 247, 0.3),
+                        inset 0 0 15px rgba(168, 85, 247, 0.08),
+                        0 25px 50px rgba(0,0,0,0.7);
+        }
+        
+        .ai-logo-mark {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.05em;
+            background: linear-gradient(180deg, #ffffff 0%, #ffd0b0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 12px rgba(255, 180, 130, 0.5));
+            display: inline-block;
+        }
+        .purple-glow .ai-logo-mark {
+            background: linear-gradient(180deg, #ffffff 0%, #e0ccff 100%);
+            filter: drop-shadow(0 0 12px rgba(180, 130, 255, 0.5));
+        }
+
+        .stat-bar-segment {
+            height: 3px;
+            width: 1.25rem;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .stat-bar-segment.active {
+            background: #ffffff;
+        }
+        .stat-bar-segment.amber {
+            background: #d97757;
+        }
+        .purple-glow .stat-bar-segment.amber {
+            background: #a855f7;
+        }
+
+        /* Process Animation Styles */
+        .process-container {
+            height: 400vh; /* 4 cards */
+        }
+        .process-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+        .process-orbit {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            transform-style: preserve-3d;
+        }
+        .process-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 320px;
+            margin-left: -160px;
+            margin-top: -200px;
+            height: 400px;
+            transform-origin: 50% 50%;
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
+            opacity: 0.3;
+            /* Base positioning handled by JS */
+        }
+        .process-card.active {
+            opacity: 1;
+            z-index: 10;
+        }
+        .process-card .obsidian-card {
+            height: 100%;
+        }
+        .process-card.active .obsidian-card {
+            box-shadow: inset 0 20px 40px -20px rgba(168, 85, 247, 0.4),
+                        inset 0 0 20px rgba(168, 85, 247, 0.1),
+                        0 30px 60px rgba(0,0,0,0.8),
+                        0 0 40px rgba(168, 85, 247, 0.2);
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .process-orbit {
+                width: 100vw;
+                height: 100vw;
+            }
+            .process-card {
+                width: 280px;
+                margin-left: -140px;
+                height: 360px;
+                margin-top: -180px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-white antialiased selection:bg-white selection:text-black">
+<div class="noise-overlay"></div>
+<nav class="fixed w-full z-40 top-0 pt-6 px-6 md:px-12 transition-all duration-300 mix-blend-difference">
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+<a class="text-2xl font-semibold tracking-tighter text-white" href="#">LUMINA AI.</a>
+<div class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
+<a class="hover:text-white transition-colors" href="#services">Services</a>
+<a class="hover:text-white transition-colors" href="#process">Process</a>
+<a class="hover:text-white transition-colors" href="#work">Work</a>
+<a class="hover:text-white transition-colors" href="#about">About</a>
+</div>
+<a class="glass-button hidden md:inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white" href="#contact">
+                Get in touch
+            </a>
+</div>
+</nav>
+<!-- 
+  FLEXIBLE HERO SECTION WRAPPER 
+  To add a scrollable hero section later:
+  1. Change the height of this wrapper (e.g., to h-[300vh] or h-[400vh]) to allow scrolling space.
+  2. The inner section stays 'sticky top-0 h-screen'.
+  3. Use GSAP ScrollTrigger to animate the inner elements as you scroll down this wrapper.
+-->
+<div id="hero-scroll-wrapper" class="relative w-full h-screen">
+<section id="hero" class="sticky top-0 h-screen w-full flex items-center justify-center pt-20 overflow-hidden">
+<div class="absolute inset-0 bg-hero-glow z-0"></div>
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] mix-blend-screen z-0" id="hero-blob-1"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[150px] mix-blend-screen z-0" id="hero-blob-2"></div>
+<div class="relative z-10 max-w-5xl mx-auto px-6 text-center" id="hero-content">
+<h1 class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-tight mb-8 text-gradient font-headline-lg">
+                The Future of<br/>Creation is Here
+            </h1>
+<p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed font-body-lg">
+                We blend artificial intelligence with human creativity to forge unparalleled digital experiences, cinematic visuals, and brands that define tomorrow.
+            </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a class="glass-button px-8 py-4 rounded-full text-white font-medium flex items-center gap-2 w-full sm:w-auto justify-center" href="#services">
+                    Explore Services
+                    <span class="material-icons text-sm">arrow_downward</span>
+</a>
+<a class="glass-button px-8 py-4 rounded-full text-white font-medium flex items-center gap-2 w-full sm:w-auto justify-center" href="#portfolio">
+                    View Showreel
+                    <span class="material-icons text-sm">play_arrow</span>
+</a>
+</div>
+</div>
+</section>
+</div>
+
+<!-- Main Content Wrapper to overlay the sticky hero -->
+<main class="relative z-20 bg-background-light dark:bg-background-dark">
+<section class="py-32 relative z-10" id="services">
+<div class="max-w-7xl mx-auto px-6 md:px-12">
+<div class="mb-20 md:text-center">
+<h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6 font-headline-lg">Our Expertise</h2>
+<p class="text-gray-400 text-lg max-w-2xl mx-auto font-light font-body-lg">Elevating brands through state-of-the-art generative AI and masterful design.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+<!-- Card 1 -->
+<div class="obsidian-card rounded-3xl p-8 flex flex-col h-full">
+<div class="flex justify-center pt-8 pb-12">
+<div class="ai-logo-mark font-display-lg">A\</div>
+</div>
+<div class="mt-auto">
+<h3 class="text-xl font-medium text-white mb-3 font-headline-lg">AI Audio &amp; Video Ads</h3>
+<p class="text-sm text-gray-400 leading-relaxed mb-8 h-16 font-body-sm">
+                Hyper-targeted, dynamic audio and video campaigns generated at scale.
+            </p>
+<div class="border-t border-white/5 pt-6 space-y-4">
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Speed</span>
+<div class="flex gap-1.5">
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Intelligence</span>
+<div class="flex gap-1.5">
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Context Window</span>
+<span class="text-gray-300 lowercase text-xs">200k</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="obsidian-card rounded-3xl p-8 flex flex-col h-full">
+<div class="flex justify-center pt-8 pb-12">
+<div class="ai-logo-mark font-display-lg">A\</div>
+</div>
+<div class="mt-auto">
+<h3 class="text-xl font-medium text-white mb-3 font-headline-lg">AI Brand Advertising</h3>
+<p class="text-sm text-gray-400 leading-relaxed mb-8 h-16 font-body-sm">
+                Data-driven brand narratives crafted by AI for maximum engagement.
+            </p>
+<div class="border-t border-white/5 pt-6 space-y-4">
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Speed</span>
+<div class="flex gap-1.5">
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment"></div>
+<div class="stat-bar-segment amber"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Intelligence</span>
+<div class="flex gap-1.5">
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment amber"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Context Window</span>
+<span class="text-gray-300 lowercase text-xs">200k</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="obsidian-card rounded-3xl p-8 flex flex-col h-full">
+<div class="flex justify-center pt-8 pb-12">
+<div class="ai-logo-mark font-display-lg">A\</div>
+</div>
+<div class="mt-auto">
+<h3 class="text-xl font-medium text-white mb-3 font-headline-lg">AI-Powered Websites</h3>
+<p class="text-sm text-gray-400 leading-relaxed mb-8 h-16 font-body-sm">
+                Intelligent, adaptive web experiences that personalize content in real-time.
+            </p>
+<div class="border-t border-white/5 pt-6 space-y-4">
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Speed</span>
+<div class="flex gap-1.5">
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment"></div>
+<div class="stat-bar-segment"></div>
+<div class="stat-bar-segment"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Intelligence</span>
+<div class="flex gap-1.5">
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment amber"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Context Window</span>
+<span class="text-gray-300 lowercase text-xs">200k</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="obsidian-card rounded-3xl p-8 flex flex-col h-full">
+<div class="flex justify-center pt-8 pb-12">
+<div class="ai-logo-mark font-display-lg">A\</div>
+</div>
+<div class="mt-auto">
+<h3 class="text-xl font-medium text-white mb-3 font-headline-lg">AI Short Movies</h3>
+<p class="text-sm text-gray-400 leading-relaxed mb-8 h-16 font-body-sm">
+                Cinematic storytelling pushed to new limits with generative video models.
+            </p>
+<div class="border-t border-white/5 pt-6 space-y-4">
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Speed</span>
+<div class="flex gap-1.5">
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment"></div>
+<div class="stat-bar-segment"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Intelligence</span>
+<div class="flex gap-1.5">
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Context Window</span>
+<span class="text-gray-300 lowercase text-xs">200k</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 5 (Purple Glow) -->
+<div class="obsidian-card purple-glow rounded-3xl p-8 flex flex-col h-full">
+<div class="flex justify-center pt-8 pb-12">
+<div class="ai-logo-mark font-display-lg">A\</div>
+</div>
+<div class="mt-auto">
+<h3 class="text-xl font-medium text-white mb-3 font-headline-lg">Motion Graphics</h3>
+<p class="text-sm text-gray-400 leading-relaxed mb-8 h-16 font-body-sm">
+                Fluid, complex animations and 3D visual effects rendered with unprecedented speed.
+            </p>
+<div class="border-t border-white/5 pt-6 space-y-4">
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Speed</span>
+<div class="flex gap-1.5">
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment amber"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Intelligence</span>
+<div class="flex gap-1.5">
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Context Window</span>
+<span class="text-gray-300 lowercase text-xs">200k</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="obsidian-card rounded-3xl p-8 flex flex-col h-full">
+<div class="flex justify-center pt-8 pb-12">
+<div class="ai-logo-mark font-display-lg">A\</div>
+</div>
+<div class="mt-auto">
+<h3 class="text-xl font-medium text-white mb-3 font-headline-lg">Corporate Presentations</h3>
+<p class="text-sm text-gray-400 leading-relaxed mb-8 h-16 font-body-sm">
+                Transforming standard slide decks into highly immersive visual stories.
+            </p>
+<div class="border-t border-white/5 pt-6 space-y-4">
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Speed</span>
+<div class="flex gap-1.5">
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment"></div>
+<div class="stat-bar-segment"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Intelligence</span>
+<div class="flex gap-1.5">
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment active"></div>
+<div class="stat-bar-segment"></div>
+<div class="stat-bar-segment amber"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10px] tracking-widest text-gray-500 font-semibold uppercase font-label-caps">
+<span>Context Window</span>
+<span class="text-gray-300 lowercase text-xs">200k</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- New Process Section -->
+<section class="process-container relative z-10" id="process">
+<div class="process-sticky">
+<div class="absolute top-12 left-0 w-full text-center z-20">
+<h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4 font-headline-lg">Our Process</h2>
+<p class="text-gray-400 text-lg font-light font-body-lg">The alchemy of logic and imagination.</p>
+</div>
+<div class="process-orbit" id="orbit-container">
+<!-- Card 1: Discovery -->
+<div class="process-card" data-index="0">
+<div class="obsidian-card rounded-3xl p-8 flex flex-col h-full justify-between purple-glow">
+<div class="text-right">
+<span class="text-5xl font-bold text-white/10 font-display-lg">01</span>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-white mb-4 font-headline-lg">Discovery</h3>
+<p class="text-gray-400 font-body-lg leading-relaxed">
+                            We analyze your brand DNA and objectives, feeding parameters into our neural networks to uncover hidden opportunities and novel conceptual angles.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Card 2: Creative Direction -->
+<div class="process-card" data-index="1">
+<div class="obsidian-card rounded-3xl p-8 flex flex-col h-full justify-between purple-glow">
+<div class="text-right">
+<span class="text-5xl font-bold text-white/10 font-display-lg">02</span>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-white mb-4 font-headline-lg">Creative Direction</h3>
+<p class="text-gray-400 font-body-lg leading-relaxed">
+                            Human art directors shape the AI's output, establishing the visual language, tone, and narrative arc that will define the final production.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Card 3: Neural Production -->
+<div class="process-card" data-index="2">
+<div class="obsidian-card rounded-3xl p-8 flex flex-col h-full justify-between purple-glow">
+<div class="text-right">
+<span class="text-5xl font-bold text-white/10 font-display-lg">03</span>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-white mb-4 font-headline-lg">Neural Production</h3>
+<p class="text-gray-400 font-body-lg leading-relaxed">
+                            Our proprietary models generate high-fidelity assets at unprecedented speed—from cinematic video sequences to complex 3D environments.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Card 4: Final Refinement -->
+<div class="process-card" data-index="3">
+<div class="obsidian-card rounded-3xl p-8 flex flex-col h-full justify-between purple-glow">
+<div class="text-right">
+<span class="text-5xl font-bold text-white/10 font-display-lg">04</span>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-white mb-4 font-headline-lg">Final Refinement</h3>
+<p class="text-gray-400 font-body-lg leading-relaxed">
+                            Expert craftsmen polish the generated assets, performing meticulous color grading, sound design, and compositing for a flawless final delivery.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const processContainer = document.querySelector('.process-container');
+        const cards = document.querySelectorAll('.process-card');
+        const numCards = cards.length;
+        
+        // Base radius for the orbit
+        const radius = window.innerWidth > 768 ? 400 : 250;
+
+        function updateCards() {
+            const containerRect = processContainer.getBoundingClientRect();
+            // Calculate scroll progress through the container (0 to 1)
+            const scrollDistance = -containerRect.top;
+            const scrollableHeight = containerRect.height - window.innerHeight;
+            
+            let progress = 0;
+            if (scrollDistance > 0 && scrollDistance < scrollableHeight) {
+                progress = scrollDistance / scrollableHeight;
+            } else if (scrollDistance >= scrollableHeight) {
+                progress = 1;
+            }
+
+            // Calculate base rotation based on progress (anti-clockwise)
+            const baseRotation = progress * Math.PI * 2 * (numCards - 1) / numCards;
+
+            cards.forEach((card, index) => {
+                // Initial offset for each card in the circle
+                const angleOffset = (index / numCards) * Math.PI * 2;
+                // Current angle
+                const currentAngle = angleOffset - baseRotation;
+                
+                // Position in orbit
+                const x = Math.sin(currentAngle) * radius;
+                // Move back in Z as well to create 3D depth
+                const z = Math.cos(currentAngle) * radius - radius;
+                
+                // Rotation to face slightly inward/outward
+                const rotateY = -currentAngle * (180 / Math.PI);
+
+                // Determine how close this card is to the "front center" (currentAngle ~ 0 or 2PI)
+                let normalizedAngle = currentAngle % (Math.PI * 2);
+                if (normalizedAngle < 0) normalizedAngle += Math.PI * 2;
+                if (normalizedAngle > Math.PI) normalizedAngle = Math.PI * 2 - normalizedAngle;
+                
+                // 0 is front center, PI is back
+                const distFromFront = normalizedAngle / Math.PI; // 0 to 1
+                
+                // Scale and active state based on position
+                const isActive = distFromFront < 0.15;
+                const scale = isActive ? 1.05 : (1 - (distFromFront * 0.3));
+                
+                if (isActive) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+
+                card.style.transform = `translate3d(${x}px, 0, ${z}px) rotateY(${rotateY}deg) scale(${scale})`;
+                
+                // Adjust opacity based on depth
+                if(!isActive) {
+                    card.style.opacity = Math.max(0.1, 1 - (distFromFront * 1.5));
+                }
+            });
+        }
+
+        // Initialize and listen to scroll
+        updateCards();
+        window.addEventListener('scroll', updateCards, { passive: true });
+        window.addEventListener('resize', () => {
+             updateCards(); // Update radius logic if needed for resize
+        });
+    });
+</script>
+<section class="py-32 relative z-10 bg-black/50 border-t border-white/5" id="work">
+<div class="max-w-7xl mx-auto px-6 md:px-12">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4 font-headline-lg">Selected Work</h2>
+<p class="text-gray-400 text-lg font-light font-body-lg">A glimpse into the impossible, made real.</p>
+</div>
+<a class="text-sm font-medium text-white hover:text-gray-300 transition-colors flex items-center gap-2 border-b border-white/20 pb-1 hover:border-white font-body-sm" href="#">
+                    View all projects
+                    <span class="material-icons text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-surface-dark border border-white/10">
+<img alt="Abstract fluid 3D render in metallic dark tones" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnntHk7AFOf8g4PtOgMaWdaUI2N4EeGTIlFP371o7L7P4_PW1tomH-pUuZHer5px1k66oCnDKqFEMYStTeZbaNrc_r0LTpEri0vI5K-gXgnzb4svoSpc887m_D11-f_rI00M2ZzIimZGHA1iF5EMjn9w74CTd43jWjWb6sxruRqvg3MmgX0yRygLXOkwUuMtENjt_wbW-9vBWYJs-qLR5bprxkjm_ZCsjOOewyZbePRzLwEdxibI-ftfeR6QSl16GtdgZN905h-Tf4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-xl font-semibold mb-2 group-hover:text-white transition-colors text-gray-200 font-headline-lg">Neural Nexus</h3>
+<p class="text-sm text-gray-500 font-body-sm">AI Brand Identity &amp; Motion</p>
+</div>
+<div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center -rotate-45 group-hover:rotate-0 transition-transform duration-300 bg-white/5">
+<span class="material-icons text-white/80 text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+<div class="group cursor-pointer md:mt-16">
+<div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-surface-dark border border-white/10">
+<img alt="Abstract dark glass shapes with warm light refraction" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu6_7RWOWu3-156Dhe_oXU45s0aWVSCYR2lkYN5JPYbwici5eyzfnavmCVdJ4g0aqy9NvPBQIm59OafXq9q2uSCgVoU1R0omuBTJKDidLPv-xKsWfSWGCkDFBBPVOqzWa2fp5z5ZNnyG7KQqwbSPFtiL-c-FBJJ7elfYGLWF0GJQcyh5LhR9W7AKw1Bs-gTzDQQlDrnM6eNK7DzLPfrGah1jUhTMxEiis9NUJ1NpsF7UI56N8nACA7NRv_nB46BTAUMkD9ajL2oyBY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-xl font-semibold mb-2 group-hover:text-white transition-colors text-gray-200 font-headline-lg">Echoes in Void</h3>
+<p class="text-sm text-gray-500 font-body-sm">AI Short Film Generation</p>
+</div>
+<div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center -rotate-45 group-hover:rotate-0 transition-transform duration-300 bg-white/5">
+<span class="material-icons text-white/80 text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="py-32 relative z-10 text-center px-6 border-t border-white/5">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-8 font-headline-lg">Ready to create the<br/>extraordinary?</h2>
+<p class="text-gray-400 mb-12 text-lg font-light font-body-lg">Let's harness the power of AI to elevate your brand to the next dimension.</p>
+<a class="glass-button inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white font-body-lg" href="#contact">
+                Start a Project
+            </a>
+<div class="mt-32 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 font-body-sm">
+<p>© 2024 Lumina AI. All rights reserved.</p>
+<div class="flex space-x-6">
+<a class="hover:text-white transition-colors" href="#">Twitter</a>
+<a class="hover:text-white transition-colors" href="#">Instagram</a>
+<a class="hover:text-white transition-colors" href="#">LinkedIn</a>
+</div>
+</div>
+</div>
+</footer>
+</main>
+</body></html>
