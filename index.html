@@ -423,6 +423,123 @@
             }
         }
 
+        /* ============================================================
+           MOBILE RESPONSIVE — Splash Screen & Hero Section
+           ============================================================ */
+
+        /* --- Tablets & small laptops (≤ 768px) --- */
+        @media (max-width: 768px) {
+            :root {
+                --splash-logo-height: 36px;
+                --splash-logo-scale-to: 2.5;
+                --splash-ring-size: 240px;
+                --splash-burst-size: 320px;
+                --splash-shimmer-width: 72px;
+            }
+
+            #splash-screen {
+                overflow: hidden;
+            }
+
+            /* Hero section mobile fixes */
+            #hero {
+                padding-top: 4rem;
+                min-height: 100vh;
+                min-height: 100dvh; /* accounts for mobile browser chrome */
+            }
+
+            #hero-content {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            #hero h1,
+            #hero-h1 {
+                font-size: 2.75rem !important;
+                line-height: 1.1;
+                margin-bottom: 1.5rem;
+                letter-spacing: -0.03em;
+            }
+
+            #hero p,
+            #hero-p {
+                font-size: 1rem !important;
+                margin-bottom: 2rem;
+                max-width: 90vw;
+            }
+
+            #hero-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+
+            #hero-buttons a {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.875rem;
+            }
+
+            /* Reduce blob sizes so they don't cause overflow */
+            #hero-blob-1 {
+                width: 200px !important;
+                height: 200px !important;
+            }
+
+            #hero-blob-2 {
+                width: 250px !important;
+                height: 250px !important;
+            }
+        }
+
+        /* --- Small phones (≤ 480px) --- */
+        @media (max-width: 480px) {
+            :root {
+                --splash-logo-height: 28px;
+                --splash-logo-scale-to: 2;
+                --splash-ring-size: 180px;
+                --splash-burst-size: 240px;
+                --splash-shimmer-width: 56px;
+            }
+
+            #hero h1,
+            #hero-h1 {
+                font-size: 2.25rem !important;
+                line-height: 1.1;
+                margin-bottom: 1.25rem;
+            }
+
+            #hero p,
+            #hero-p {
+                font-size: 0.9375rem !important;
+                line-height: 1.5;
+                margin-bottom: 1.75rem;
+            }
+
+            #hero-buttons {
+                max-width: 280px;
+            }
+
+            #hero-buttons a {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.8125rem;
+            }
+
+            /* Reduce blob sizes further */
+            #hero-blob-1 {
+                width: 150px !important;
+                height: 150px !important;
+                filter: blur(80px);
+            }
+
+            #hero-blob-2 {
+                width: 180px !important;
+                height: 180px !important;
+                filter: blur(100px);
+            }
+        }
+
         .liquid-glass {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(16px);
@@ -479,7 +596,7 @@
         /* Obsidian Glass Styles */
         .obsidian-card {
             background: linear-gradient(180deg, #181210 0%, #0a0a0a 100%);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 153, 153, 0.05);
             box-shadow: inset 0 20px 40px -20px rgba(220, 120, 80, 0.15),
                 inset 0 0 15px rgba(220, 120, 80, 0.05),
                 0 20px 40px rgba(0, 0, 0, 0.6);
