@@ -441,55 +441,9 @@
                 overflow: hidden;
             }
 
-            /* Hero section mobile fixes */
+            /* Use dynamic viewport height for mobile browser chrome */
             #hero {
-                padding-top: 4rem;
-                min-height: 100vh;
-                min-height: 100dvh; /* accounts for mobile browser chrome */
-            }
-
-            #hero-content {
-                padding-left: 1.25rem;
-                padding-right: 1.25rem;
-            }
-
-            #hero h1,
-            #hero-h1 {
-                font-size: 2.75rem !important;
-                line-height: 1.1;
-                margin-bottom: 1.5rem;
-                letter-spacing: -0.03em;
-            }
-
-            #hero p,
-            #hero-p {
-                font-size: 1rem !important;
-                margin-bottom: 2rem;
-                max-width: 90vw;
-            }
-
-            #hero-buttons {
-                flex-direction: column;
-                gap: 0.75rem;
-                width: 100%;
-                max-width: 320px;
-                margin: 0 auto;
-            }
-
-            #hero-buttons a {
-                padding: 0.875rem 1.5rem;
-                font-size: 0.875rem;
-            }
-
-            /* Reduce blob sizes so they don't cause overflow */
-            #hero-blob-1 {
-                width: 200px !important;
-                height: 200px !important;
-            }
-
-            #hero-blob-2 {
-                width: 250px !important;
-                height: 250px !important;
+                min-height: 100dvh;
             }
         }
 
@@ -501,42 +455,6 @@
                 --splash-ring-size: 180px;
                 --splash-burst-size: 240px;
                 --splash-shimmer-width: 56px;
-            }
-
-            #hero h1,
-            #hero-h1 {
-                font-size: 2.25rem !important;
-                line-height: 1.1;
-                margin-bottom: 1.25rem;
-            }
-
-            #hero p,
-            #hero-p {
-                font-size: 0.9375rem !important;
-                line-height: 1.5;
-                margin-bottom: 1.75rem;
-            }
-
-            #hero-buttons {
-                max-width: 280px;
-            }
-
-            #hero-buttons a {
-                padding: 0.75rem 1.25rem;
-                font-size: 0.8125rem;
-            }
-
-            /* Reduce blob sizes further */
-            #hero-blob-1 {
-                width: 150px !important;
-                height: 150px !important;
-                filter: blur(80px);
-            }
-
-            #hero-blob-2 {
-                width: 180px !important;
-                height: 180px !important;
-                filter: blur(100px);
             }
         }
 
@@ -997,31 +915,31 @@
   2. The inner section stays 'sticky top-0 h-screen'.
   3. Use GSAP ScrollTrigger to animate the inner elements as you scroll down this wrapper.
 -->
-    <section id="hero" class="h-screen w-full flex items-center justify-center pt-20 overflow-hidden relative"
+    <section id="hero" class="h-screen w-full flex items-center justify-center pt-16 md:pt-20 overflow-hidden relative"
         style="z-index: 1;">
         <div class="absolute inset-0 bg-hero-glow z-0"></div>
         <canvas id="hero-canvas" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0"></canvas>
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] mix-blend-screen z-0"
+        <div class="absolute top-1/4 left-1/4 w-48 h-48 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-[80px] md:blur-[120px] mix-blend-screen z-0"
             id="hero-blob-1"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[150px] mix-blend-screen z-0"
+        <div class="absolute bottom-1/4 right-1/4 w-56 h-56 md:w-[500px] md:h-[500px] bg-purple-500/10 rounded-full blur-[100px] md:blur-[150px] mix-blend-screen z-0"
             id="hero-blob-2"></div>
-        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pointer-events-none" id="hero-content">
+        <div class="relative z-10 max-w-5xl mx-auto px-5 md:px-6 text-center" id="hero-content">
             <h1 id="hero-h1"
-                class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-tight mb-8 text-gradient font-headline-lg scroll-reveal">
+                class="text-[2.25rem] leading-[1.1] sm:text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter md:leading-tight mb-4 sm:mb-6 md:mb-8 text-gradient font-headline-lg scroll-reveal">
                 The Future of<br />Creation is Here
             </h1>
             <p id="hero-p"
-                class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed font-body-lg scroll-reveal">
+                class="text-base sm:text-lg md:text-xl text-gray-400 max-w-[90vw] sm:max-w-lg md:max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-12 font-light leading-relaxed font-body-lg scroll-reveal">
                 We blend artificial intelligence with human creativity to forge unparalleled digital experiences,
                 cinematic visuals, and brands that define tomorrow.
             </p>
-            <div id="hero-buttons" class="flex flex-col sm:flex-row items-center justify-center gap-4 scroll-reveal">
-                <a class="liquid-glass px-8 py-4 rounded-full text-white font-medium flex items-center gap-2 w-full sm:w-auto justify-center"
+            <div id="hero-buttons" class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 scroll-reveal max-w-xs sm:max-w-none mx-auto">
+                <a class="liquid-glass px-6 py-3 sm:px-8 sm:py-4 rounded-full text-white text-sm sm:text-base font-medium flex items-center gap-2 w-full sm:w-auto justify-center"
                     href="#services">
                     Explore Services
                     <span class="material-icons text-sm">arrow_downward</span>
                 </a>
-                <a class="liquid-glass px-8 py-4 rounded-full text-white font-medium flex items-center gap-2 w-full sm:w-auto justify-center"
+                <a class="liquid-glass px-6 py-3 sm:px-8 sm:py-4 rounded-full text-white text-sm sm:text-base font-medium flex items-center gap-2 w-full sm:w-auto justify-center"
                     href="#portfolio">
                     View Showreel
                     <span class="material-icons text-sm">play_arrow</span>
