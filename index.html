@@ -192,34 +192,234 @@
             will-change: opacity, transform;
         }
 
-        /* Splash Screen */
+        /* ============================================================
+           SPLASH SCREEN — Customizable Loading Animation
+           ============================================================
+           ★ CHANGE THESE VARIABLES TO CUSTOMISE THE SPLASH SCREEN ★
+           All animation timings, sizes, and colors are controlled here.
+        */
+        :root {
+            /* — Logo size (height; width scales proportionally) — */
+            --splash-logo-height: 50px;
+
+            /* — Overall splash duration before fade-out (ms) — */
+            --splash-display-duration: 3400ms;
+
+            /* — Logo entrance animation — */
+            --splash-logo-fade-in: 0.7s;
+            /* how long the logo takes to appear */
+            --splash-logo-scale-from: 0.4;
+            /* starting scale */
+            --splash-logo-scale-to: 4;
+            /* ending scale */
+
+            /* — Glow ring — */
+            --splash-ring-size: 450px;
+            /* diameter of the ring */
+            --splash-ring-color: rgba(34, 8, 148, 0.452);
+            --splash-ring-glow: rgba(39, 137, 248, 0.89);
+            --splash-ring-duration: 2.5s;
+            /* full rotation cycle */
+
+            /* — Radial light burst — */
+            --splash-burst-size: 600px;
+            --splash-burst-color: rgba(168, 130, 255, 0.08);
+            --splash-burst-duration: 2s;
+
+            /* — Background — */
+            --splash-bg: #0A0A0A;
+
+            /* — Shimmer bar beneath logo — */
+            --splash-shimmer-width: 100px;
+            --splash-shimmer-color: rgba(255, 255, 255, 0.5);
+            --splash-shimmer-duration: 1.5s;
+
+            /* — Fade-out duration — */
+            --splash-fade-out: 0.6s;
+        }
+
+        /* Splash Screen Container */
         #splash-screen {
             position: fixed;
             inset: 0;
             z-index: 200;
-            background: #0A0A0A;
+            background: var(--splash-bg);
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
+            gap: 24px;
         }
 
-        #splash-screen img {
-            height: 80px;
+        /* Logo wrapper — holds logo + glow ring */
+        .splash-logo-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: calc(var(--splash-ring-size) + 40px);
+            height: calc(var(--splash-ring-size) + 40px);
+        }
+
+        /* The logo image */
+        #splash-screen .splash-logo {
+            height: var(--splash-logo-height);
             width: auto;
-            animation: splashPulse 2s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: scale(var(--splash-logo-scale-from));
+            animation: splashLogoIn var(--splash-logo-fade-in) cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
         }
 
-        @keyframes splashPulse {
+        /* Glow ring orbiting the logo */
+        .splash-ring {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: var(--splash-ring-size);
+            height: var(--splash-ring-size);
+            border-radius: 50%;
+            border: 1.5px solid transparent;
+            border-top-color: var(--splash-ring-color);
+            border-right-color: var(--splash-ring-color);
+            box-shadow: 0 0 40px var(--splash-ring-glow);
+            animation: splashRingSpin var(--splash-ring-duration) linear infinite;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .splash-ring.visible {
+            opacity: 1;
+        }
+
+        /* Radial light burst behind logo */
+        .splash-burst {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: var(--splash-burst-size);
+            height: var(--splash-burst-size);
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--splash-burst-color) 0%, transparent 70%);
+            animation: splashBurstPulse var(--splash-burst-duration) ease-in-out infinite;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .splash-burst.visible {
+            opacity: 1;
+        }
+
+        /* Shimmer loading bar */
+        .splash-shimmer {
+            width: var(--splash-shimmer-width);
+            height: 2px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            animation: splashShimmerIn 0.5s ease 0.6s forwards;
+        }
+
+        .splash-shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--splash-shimmer-color), transparent);
+            animation: splashShimmerSlide var(--splash-shimmer-duration) ease-in-out infinite;
+        }
+
+        /* ---- Keyframes ---- */
+        @keyframes splashLogoIn {
+            0% {
+                opacity: 0;
+                transform: scale(var(--splash-logo-scale-from));
+                filter: blur(8px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(var(--splash-logo-scale-to));
+                filter: blur(0px);
+            }
+        }
+
+        @keyframes splashRingSpin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes splashBurstPulse {
 
             0%,
             100% {
-                opacity: 0.6;
-                transform: scale(1);
+                transform: scale(0.85);
+                opacity: 0.5;
             }
 
             50% {
+                transform: scale(1.1);
                 opacity: 1;
-                transform: scale(1.08);
+            }
+        }
+
+        @keyframes splashShimmerIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes splashShimmerSlide {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 200%;
+            }
+        }
+
+        /* Splash exit animation (applied via JS) */
+        #splash-screen.splash-exit {
+            animation: splashFadeOut var(--splash-fade-out) cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        #splash-screen.splash-exit .splash-logo {
+            animation: splashLogoOut calc(var(--splash-fade-out) * 0.8) cubic-bezier(0.4, 0, 1, 1) forwards;
+        }
+
+        @keyframes splashFadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+
+        @keyframes splashLogoOut {
+            0% {
+                transform: scale(1);
+                filter: blur(0px);
+            }
+
+            100% {
+                transform: scale(1.15);
+                filter: blur(6px);
             }
         }
 
@@ -619,9 +819,17 @@
 
 <body
     class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-white antialiased selection:bg-white selection:text-black">
-    <!-- Splash Screen -->
+    <!-- Splash Screen
+         ★ To change the logo: swap the src below.
+         ★ To change sizes/colors/speeds: edit the CSS variables at the top of <style>.
+    -->
     <div id="splash-screen">
-        <img src="Srujan-Logo.png" alt="SRUJAN AI">
+        <div class="splash-logo-wrap">
+            <div class="splash-burst" id="splash-burst"></div>
+            <div class="splash-ring" id="splash-ring"></div>
+            <img src="Srujan-Logo.png" alt="SRUJAN AI" class="splash-logo">
+        </div>
+        <div class="splash-shimmer"></div>
     </div>
     <div class="noise-overlay"></div>
     <nav class="fixed w-full z-40 top-0 pt-6 px-6 md:px-12 transition-all duration-300">
@@ -1328,15 +1536,34 @@
             }
 
             // --- SPLASH SCREEN ---
+            // Uses CSS custom property --splash-display-duration for timing.
+            // The ring & burst appear after a short delay for a staged reveal.
             const splash = document.getElementById('splash-screen');
             if (splash) {
-                gsap.to(splash, {
-                    opacity: 0,
-                    duration: 0.8,
-                    delay: 1.8,
-                    ease: 'power2.inOut',
-                    onComplete: () => splash.remove()
-                });
+                const splashRing = document.getElementById('splash-ring');
+                const splashBurst = document.getElementById('splash-burst');
+
+                // Stage 1: Show ring & burst after logo starts appearing
+                setTimeout(() => {
+                    if (splashRing) splashRing.classList.add('visible');
+                    if (splashBurst) splashBurst.classList.add('visible');
+                }, 400);
+
+                // Stage 2: Trigger exit animation after display duration
+                const displayDuration = parseFloat(
+                    getComputedStyle(document.documentElement)
+                        .getPropertyValue('--splash-display-duration')
+                ) || 2400;
+
+                setTimeout(() => {
+                    splash.classList.add('splash-exit');
+                    // Remove from DOM after exit animation completes
+                    const fadeOut = parseFloat(
+                        getComputedStyle(document.documentElement)
+                            .getPropertyValue('--splash-fade-out')
+                    ) * 1000 || 600;
+                    setTimeout(() => splash.remove(), fadeOut);
+                }, displayDuration);
             }
 
             // --- SCROLL REVEAL ANIMATIONS (Sequential: heading → subheading → content) ---
