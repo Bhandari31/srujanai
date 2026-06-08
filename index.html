@@ -6,6 +6,8 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Srujan AI - India's AI creative advertisement studio for brands of every size.</title>
+    <link rel="icon" type="image/png" href="Srujan-Icon.png">
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -670,46 +672,41 @@
   2. The inner section stays 'sticky top-0 h-screen'.
   3. Use GSAP ScrollTrigger to animate the inner elements as you scroll down this wrapper.
 -->
-    <div id="hero-scroll-wrapper" class="relative w-full h-[300vh]">
-        <section id="hero" class="sticky top-0 h-screen w-full flex items-center justify-center pt-20 overflow-hidden"
-            style="z-index: 1;">
-            <div class="absolute inset-0 bg-hero-glow z-0"></div>
-            <canvas id="hero-canvas" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0"></canvas>
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] mix-blend-screen z-0"
-                id="hero-blob-1"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[150px] mix-blend-screen z-0"
-                id="hero-blob-2"></div>
-            <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pointer-events-none" id="hero-content">
-                <h1 id="hero-h1"
-                    class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-tight mb-8 text-gradient font-headline-lg scroll-reveal">
-                    The Future of<br />Creation is Here
-                </h1>
-                <p id="hero-p"
-                    class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed font-body-lg scroll-reveal">
-                    We blend artificial intelligence with human creativity to forge unparalleled digital experiences,
-                    cinematic visuals, and brands that define tomorrow.
-                </p>
-                <div id="hero-buttons"
-                    class="flex flex-col sm:flex-row items-center justify-center gap-4 scroll-reveal">
-                    <a class="liquid-glass px-8 py-4 rounded-full text-white font-medium flex items-center gap-2 w-full sm:w-auto justify-center"
-                        href="#services">
-                        Explore Services
-                        <span class="material-icons text-sm">arrow_downward</span>
-                    </a>
-                    <a class="liquid-glass px-8 py-4 rounded-full text-white font-medium flex items-center gap-2 w-full sm:w-auto justify-center"
-                        href="#portfolio">
-                        View Showreel
-                        <span class="material-icons text-sm">play_arrow</span>
-                    </a>
-                </div>
+    <section id="hero" class="h-screen w-full flex items-center justify-center pt-20 overflow-hidden relative"
+        style="z-index: 1;">
+        <div class="absolute inset-0 bg-hero-glow z-0"></div>
+        <canvas id="hero-canvas" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0"></canvas>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] mix-blend-screen z-0"
+            id="hero-blob-1"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[150px] mix-blend-screen z-0"
+            id="hero-blob-2"></div>
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pointer-events-none" id="hero-content">
+            <h1 id="hero-h1"
+                class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-tight mb-8 text-gradient font-headline-lg scroll-reveal">
+                The Future of<br />Creation is Here
+            </h1>
+            <p id="hero-p"
+                class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed font-body-lg scroll-reveal">
+                We blend artificial intelligence with human creativity to forge unparalleled digital experiences,
+                cinematic visuals, and brands that define tomorrow.
+            </p>
+            <div id="hero-buttons" class="flex flex-col sm:flex-row items-center justify-center gap-4 scroll-reveal">
+                <a class="liquid-glass px-8 py-4 rounded-full text-white font-medium flex items-center gap-2 w-full sm:w-auto justify-center"
+                    href="#services">
+                    Explore Services
+                    <span class="material-icons text-sm">arrow_downward</span>
+                </a>
+                <a class="liquid-glass px-8 py-4 rounded-full text-white font-medium flex items-center gap-2 w-full sm:w-auto justify-center"
+                    href="#portfolio">
+                    View Showreel
+                    <span class="material-icons text-sm">play_arrow</span>
+                </a>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
-    <!-- Main Content Wrapper to overlay the sticky hero -->
-    <main class="relative z-20" style="margin-top: -100vh;">
-        <!-- Transparent spacer so the hero last frame stays visible -->
-        <div class="h-screen pointer-events-none" aria-hidden="true"></div>
+    <!-- Main Content -->
+    <main class="relative z-20">
         <!-- Showcase Section — "Where Technology Meets Imagination"
              ============================================================
              LAYOUT: Text on left, large hero image dominating the right.
@@ -1197,9 +1194,11 @@
                 snap: "frame",
                 ease: "none",
                 scrollTrigger: {
-                    trigger: "#hero-scroll-wrapper",
+                    trigger: "#hero",
                     start: "top top",
-                    end: "70% bottom",
+                    end: "+=200%",
+                    pin: true,
+                    anticipatePin: 1,
                     scrub: 1
                 },
                 onUpdate: render
